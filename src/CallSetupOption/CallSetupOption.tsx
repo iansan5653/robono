@@ -9,14 +9,29 @@ interface Props {
   onClick: () => void;
 }
 
-export default class CallSetupQuestion extends React.Component<Props> {
+interface State {
+  selected: boolean;
+}
+
+export default class CallSetupQuestion extends React.Component<Props, State> {
+  state = {
+    selected: false
+  };
+
+  handleSelect() {
+    this.setState({ selected: true });
+  }
+
   render() {
     return (
       <FormControlLabel
         value={this.props.option.dialNumber}
         control={<Radio />}
         label={this.props.option.text}
-        onClick={this.props.onClick}
+        onChange={() => {
+          this.props.onClick();
+          this.handleSelect();
+        }}
       />
     );
   }

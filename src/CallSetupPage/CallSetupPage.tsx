@@ -1,5 +1,5 @@
 import React from "react";
-import { Callee, Menu } from "../interface";
+import { Callee, Menu, MenuOption } from "../interface";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -20,14 +20,17 @@ interface Props {
 
 interface State {
   displayClass: "visible" | "invisible";
+  currentMenu: Menu | null;
 }
 
 export default class CallSetupPage extends React.Component<Props, State> {
   container: React.ReactNode;
+  selections: MenuOption[];
 
   constructor(props: Props) {
     super(props);
-    this.state = { displayClass: "visible" };
+    this.state = { displayClass: "visible", currentMenu: this.props.menu };
+    this.selections = [];
   }
 
   startCloseTransition = () => {
@@ -37,7 +40,34 @@ export default class CallSetupPage extends React.Component<Props, State> {
     }
   };
 
+  handleChoice = (selection: MenuOption) => {
+    this.selections.push(selection);
+    this.setState({ currentMenu: selection.next });
+  };
+
+  handleUndo = () => {
+    this.selections.pop();
+    this.setState({
+      currentMenu:
+        this.selections.length > 0
+          ? this.selections[this.selections.length - 1].next
+          : this.props.menu
+    });
+  };
+
   render() {
+    let page: React.ReactNode;
+    if (this.state.currentMenu !== null) {
+      page = (
+        <CallSetupQuestion
+          menu={this.state.currentMenu}
+          onChoose={selection => this.handleChoice(selection)}
+        />
+      );
+    } else {
+      page = "This is the closing page.";
+    }
+
     return (
       <div className={`callSetupContainer ${this.state.displayClass}`}>
         <AppBar position="static">
@@ -55,12 +85,14 @@ export default class CallSetupPage extends React.Component<Props, State> {
           </Toolbar>
         </AppBar>
         <PageContainer>
-          <CallSetupQuestion
-            menu={this.props.menu}
-            onChoose={selection => console.log(selection.text)}
-          />
+          {page}
           <Toolbar className="containerBottom">
-            <Button color="primary" startIcon={<UndoIcon />} variant="outlined">
+            <Button
+              color="primary"
+              startIcon={<UndoIcon />}
+              variant="outlined"
+              onClick={this.handleUndo}
+            >
               Undo
             </Button>
           </Toolbar>
