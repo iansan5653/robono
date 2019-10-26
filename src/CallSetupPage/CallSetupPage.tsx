@@ -9,6 +9,7 @@ import PageContainer from "../PageContainer/PageContainer";
 import Button from "@material-ui/core/Button";
 import UndoIcon from "@material-ui/icons/Undo";
 import CallSetupQuestion from "../CallSetupQuestion/CallSetupQuestion";
+import CallPage from "../CallPage/CallPage";
 
 import "./CallSetupPage.css";
 
@@ -65,7 +66,7 @@ export default class CallSetupPage extends React.Component<Props, State> {
         />
       );
     } else {
-      page = "This is the closing page.";
+      page = <CallPage phoneNumber="239-324-9843" />;
     }
 
     return (

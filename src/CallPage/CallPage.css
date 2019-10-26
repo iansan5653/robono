@@ -1,0 +1,16 @@
+.callPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.callPageContainer > * {
+  display: block;
+}
+
+.spaceTop {
+  margin-top: 32px !important;
+}
