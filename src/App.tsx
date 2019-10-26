@@ -52,14 +52,14 @@ export default class App extends React.Component<{}, State> {
 
   render() {
     return (
-      <div>
+      <>
         <MainPage
           callees={companies}
           appName={APP_NAME}
           onSelectCallee={this.goToCallSetup}
         />
         {this.state.callSetupPage}
-      </div>
+      </>
     );
   }
 }

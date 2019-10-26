@@ -5,13 +5,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import PageContainer from "../PageContainer/PageContainer";
 import Button from "@material-ui/core/Button";
 import UndoIcon from "@material-ui/icons/Undo";
 import CallSetupQuestion from "../CallSetupQuestion/CallSetupQuestion";
 import CallPage from "../CallPage/CallPage";
 
 import "./CallSetupPage.css";
+import { Container } from "@material-ui/core";
 
 interface Props {
   callee: Callee;
@@ -85,10 +85,10 @@ export default class CallSetupPage extends React.Component<Props, State> {
             </Typography>
           </Toolbar>
         </AppBar>
-        <PageContainer>
+        <Container className="callSetupPageContainer" maxWidth="md">
           {page}
           {this.state.currentMenu !== this.props.menu && (
-            <Toolbar className="containerBottom">
+            <Toolbar className="callSetupPageContainerBottom">
               <Button
                 color="primary"
                 startIcon={<UndoIcon />}
@@ -99,7 +99,7 @@ export default class CallSetupPage extends React.Component<Props, State> {
               </Button>
             </Toolbar>
           )}
-        </PageContainer>
+        </Container>
       </div>
     );
   }

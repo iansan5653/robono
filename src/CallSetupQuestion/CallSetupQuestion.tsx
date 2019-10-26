@@ -3,6 +3,7 @@ import { MenuOption, Menu } from "../interface";
 import Typography from "@material-ui/core/Typography";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import CallSetupOption from "../CallSetupOption/CallSetupOption";
+import "./CallSetupQuestion.css";
 
 interface Props {
   menu: Menu;
@@ -19,11 +20,13 @@ export default class CallSetupQuestion extends React.Component<Props> {
         <RadioGroup>
           {this.props.menu.options.map((option, index) => {
             return (
-              <CallSetupOption
-                option={option}
-                key={index}
-                onClick={() => this.props.onChoose(option)}
-              />
+              <div className="padLeft">
+                <CallSetupOption
+                  option={option}
+                  key={index}
+                  onClick={() => this.props.onChoose(option)}
+                />
+              </div>
             );
           })}
         </RadioGroup>

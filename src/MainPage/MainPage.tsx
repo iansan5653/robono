@@ -3,8 +3,8 @@ import CallList from "../CallList/CallList";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { Callee } from "../interface";
-import PageContainer from "../PageContainer/PageContainer";
 import "./MainPage.css";
+import { Container } from "@material-ui/core";
 
 interface Props {
   callees: Callee[];
@@ -46,7 +46,7 @@ export default class MainPage extends React.Component<Props, State> {
 
   render() {
     return (
-      <PageContainer>
+      <Container maxWidth="md" className="mainPageContainer">
         <Typography
           variant="h6"
           component="h1"
@@ -82,7 +82,7 @@ export default class MainPage extends React.Component<Props, State> {
         >
           {this.props.appName} is a project from HackGT 2019.
         </Typography>
-      </PageContainer>
+      </Container>
     );
   }
 }
