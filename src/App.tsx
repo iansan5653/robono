@@ -6,7 +6,7 @@ import CallSetupPage from "./CallSetupPage/CallSetupPage";
 import { Callee } from "./interface";
 import { loadMenuByID } from "./loadMenu";
 
-const APP_NAME = "App Name";
+const APP_NAME = "Miniature Carnival";
 
 const companies: Callee[] = [
   { name: "Comcast", description: "Telecom", menuID: "asdf" },
