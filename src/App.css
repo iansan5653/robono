@@ -1,0 +1,13 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.footer {
+  margin-top: auto !important;
+}
+
+
+.searchBox {
+  z-index: 99;
+}
