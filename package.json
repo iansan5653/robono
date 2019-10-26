@@ -1,8 +1,8 @@
 {
   "name": "miniature-carnival-server",
   "scripts": {
-    "start": "node dist/index.js",
-    "startLocal": "npm run build && set PORT=3100 && node dist/index.js",
+    "start": "set PORT=3100 && node dist/index.js",
+    "startLocal": "set PORT=3100 && node dist/index.js",
     "buildStart": "npm run build && npm run start",
     "buildWatch": "tsc --watch",
     "startDev": "nodemon dist/index.js",
