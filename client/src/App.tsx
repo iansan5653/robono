@@ -7,6 +7,8 @@ import { Callee } from "./interface";
 import { loadMenuByID, loadCompanies } from "./fetchData";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
+// import ThemeProvider from "@material-ui/core/ThemeProvider";
+// import {theme} from "./theme";
 
 const APP_NAME = "Miniature Carnival";
 
@@ -78,3 +80,4 @@ export default class App extends React.Component<{}, State> {
     );
   }
 }
+//<ThemeProvider theme={theme}>
