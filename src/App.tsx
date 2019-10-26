@@ -4,27 +4,14 @@ import "./App.css";
 import MainPage from "./MainPage/MainPage";
 import CallSetupPage from "./CallSetupPage/CallSetupPage";
 import { Callee } from "./interface";
-import { loadMenuByID } from "./loadMenu";
+import { loadMenuByID, loadCompanies } from "./fetchData";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const APP_NAME = "Miniature Carnival";
 
-const companies: Callee[] = [
-  { name: "Comcast", description: "Telecom", menuID: "asdf" },
-  { name: "Comcast", description: "Telecom", menuID: "asdf" },
-  {
-    name: "University of North Florida",
-    description: "University",
-    menuID: "asdf"
-  },
-  { name: "Bank of America", description: "Bank", menuID: "asdf" },
-  { name: "Disney", description: "Theme Park", menuID: "asdf" },
-  { name: "Georgia Tech", description: "University", menuID: "asdf" },
-  { name: "Samsung", description: "Telecom", menuID: "asdf" },
-  { name: "Comcast", description: "Telecom", menuID: "asdf" }
-];
-
 interface State {
   callSetupPage?: React.ReactNode;
+  companies?: Callee[];
 }
 
 export default class App extends React.Component<{}, State> {
@@ -33,6 +20,7 @@ export default class App extends React.Component<{}, State> {
     this.state = {
       callSetupPage: undefined
     };
+    this.loadCompanies();
   }
 
   goHome = () => {
@@ -50,14 +38,19 @@ export default class App extends React.Component<{}, State> {
     });
   };
 
+  loadCompanies = async () => {
+    const companies = await loadCompanies();
+    this.setState({ companies: companies });
+  }
+
   render() {
     return (
       <>
-        <MainPage
-          callees={companies}
+        {this.state.companies !== undefined ? <MainPage
+          callees={this.state.companies}
           appName={APP_NAME}
           onSelectCallee={this.goToCallSetup}
-        />
+        /> : <CircularProgress className="loadingProgress" />}
         {this.state.callSetupPage}
       </>
     );

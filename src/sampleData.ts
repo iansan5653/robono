@@ -1,4 +1,4 @@
-import { Menu } from "./interface";
+import { Menu, Callee } from "./interface";
 
 const techSupportSubMenu: Menu = {
   question: "What di you need tech support for?",
@@ -71,7 +71,7 @@ const connectionSubMenu: Menu = {
   ]
 };
 
-const menu: Menu = {
+export const menu: Menu = {
   question: "What is the purpose of your call today?",
   options: [
     {
@@ -97,4 +97,53 @@ const menu: Menu = {
   ]
 };
 
-export default menu;
+export const companies: Callee[] = [
+  {
+    name: "Comcast",
+    description: "Telecom",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Comcast",
+    description: "Telecom",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "University of North Florida",
+    description: "University",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Bank of America",
+    description: "Bank",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Disney",
+    description: "Theme Park",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Georgia Tech",
+    description: "University",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Samsung",
+    description: "Telecom",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  },
+  {
+    name: "Comcast",
+    description: "Telecom",
+    menuID: "asdf",
+    phoneNumber: "1800F"
+  }
+];

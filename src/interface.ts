@@ -2,7 +2,7 @@ export interface Callee {
   name: string;
   description: string;
   // icon?: string;
-  // phoneNumber: string;
+  phoneNumber: string;
   menuID: string;
 }
 
