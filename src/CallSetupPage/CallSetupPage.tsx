@@ -86,16 +86,18 @@ export default class CallSetupPage extends React.Component<Props, State> {
         </AppBar>
         <PageContainer>
           {page}
-          <Toolbar className="containerBottom">
-            <Button
-              color="primary"
-              startIcon={<UndoIcon />}
-              variant="outlined"
-              onClick={this.handleUndo}
-            >
-              Undo
-            </Button>
-          </Toolbar>
+          {this.state.currentMenu !== this.props.menu && (
+            <Toolbar className="containerBottom">
+              <Button
+                color="primary"
+                startIcon={<UndoIcon />}
+                variant="outlined"
+                onClick={this.handleUndo}
+              >
+                Undo
+              </Button>
+            </Toolbar>
+          )}
         </PageContainer>
       </div>
     );
