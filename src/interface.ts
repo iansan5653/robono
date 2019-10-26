@@ -3,14 +3,16 @@ export interface Callee {
   description: string;
   // icon?: string;
   // phoneNumber: string;
-  // menuId: string;
+  menuID: string;
 }
 
 export interface Menu {
   question: string;
-  options: {
-    dialNumber: number;
-    text: string;
-    next: Menu | null;
-  };
+  options: MenuOption[];
+}
+
+export interface MenuOption {
+  dialNumber: number;
+  text: string;
+  next: Menu | null;
 }
