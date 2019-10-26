@@ -67,6 +67,7 @@ export default class MainPage extends React.Component<Props, State> {
             this.filterList(event.target.value);
             console.log(event.target.value);
           }}
+          autoComplete="off"
         />
         <CallList
           callees={this.state.displayedCallees}
