@@ -1,7 +1,6 @@
 {
-  "name": "miniature-carnival",
+  "name": "miniature-carnival-client",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
@@ -12,13 +11,16 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
+    "serve": "^11.2.0",
     "typescript": "^3.7.0-beta"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "startDev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build -l 3100",
+    "start": "npm run build && npm run serve"
   },
   "eslintConfig": {
     "extends": "react-app"

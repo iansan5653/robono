@@ -1,4 +1,4 @@
-import { Menu, Callee } from "./interface";
+import { Menu, Callee } from "../../client/src/interface";
 
 const techSupportSubMenu: Menu = {
   question: "What di you need tech support for?",

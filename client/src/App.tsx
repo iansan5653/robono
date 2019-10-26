@@ -43,8 +43,15 @@ export default class App extends React.Component<{}, State> {
   };
 
   loadCompanies = async () => {
-    const companies = await loadCompanies();
-    this.setState({ companies: companies, loading: false });
+    try {
+      const companies = await loadCompanies();
+      this.setState({ companies: companies, loading: false });
+    } catch (e) {
+      alert(
+        "Sorry, there was an error loading data. Please refresh to try again!"
+      );
+      console.error(e);
+    }
   };
 
   render() {

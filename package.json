@@ -1,0 +1,17 @@
+{
+  "name": "miniature-carnival",
+  "version": "1.0.0",
+  "description": "Short description.",
+  "repository": "https://github.com/iansan5653/miniature-carnival",
+  "scripts": {
+    "startClient": "cd client && npm start",
+    "startServer": "cd server && npm start",
+    "startClientDev": "cd client && npm run startDev",
+    "startServerDev": "cd server && npm run startDev"
+  },
+  "author": {
+    "name": "Ian Sanders",
+    "url": "https://github.com/iansan5653"
+  },
+  "license": "MIT"
+}
