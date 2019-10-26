@@ -56,6 +56,14 @@ export default class CallSetupPage extends React.Component<Props, State> {
     });
   };
 
+  generatePhoneNumber = (): string => {
+    let result = this.props.callee.phoneNumber;
+    this.selections.forEach(selection => {
+      result += `,,,${selection.dialNumber}`
+    });
+    return result;
+  };
+
   render() {
     let page: React.ReactNode;
     if (this.state.currentMenu !== null) {
@@ -66,7 +74,7 @@ export default class CallSetupPage extends React.Component<Props, State> {
         />
       );
     } else {
-      page = <CallPage phoneNumber="239-324-9843" />;
+      page = <CallPage phoneNumber={this.generatePhoneNumber()} />;
     }
 
     return (

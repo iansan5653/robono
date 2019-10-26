@@ -6,6 +6,7 @@ import CallSetupPage from "./CallSetupPage/CallSetupPage";
 import { Callee } from "./interface";
 import { loadMenuByID, loadCompanies } from "./fetchData";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Typography from "@material-ui/core/Typography";
 
 const APP_NAME = "Miniature Carnival";
 
@@ -57,15 +58,21 @@ export default class App extends React.Component<{}, State> {
   render() {
     return (
       <>
-        {this.state.companies !== undefined && !this.state.loading ? (
+        {this.state.companies !== undefined ? (
           <MainPage
             callees={this.state.companies}
             appName={APP_NAME}
             onSelectCallee={this.goToCallSetup}
           />
         ) : (
-          <CircularProgress className="loadingProgress" />
+          <Typography variant="body2">Loading...</Typography>
         )}
+        ;
+        <CircularProgress
+          className={`loadingProgress ${
+            this.state.loading ? "visible" : "hidden"
+          }`}
+        />
         {this.state.callSetupPage}
       </>
     );
