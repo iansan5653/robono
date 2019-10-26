@@ -20,7 +20,7 @@ export default class CallSetupQuestion extends React.Component<Props> {
         <RadioGroup>
           {this.props.menu.options.map((option, index) => {
             return (
-              <div className="padLeft">
+              <div className="padLeft" key={index}>
                 <CallSetupOption
                   option={option}
                   key={index}
