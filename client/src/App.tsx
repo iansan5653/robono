@@ -60,14 +60,12 @@ export default class App extends React.Component<{}, State> {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        {this.state.companies !== undefined ? (
+        {this.state.companies !== undefined && (
           <MainPage
             callees={this.state.companies}
             appName={APP_NAME}
             onSelectCallee={this.goToCallSetup}
           />
-        ) : (
-          <Typography variant="body2">Loading...</Typography>
         )}
         <CircularProgress
           className={`loadingProgress ${
