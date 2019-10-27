@@ -5,7 +5,7 @@
     "startLocal": "set PORT=3100 && node dist/index.js",
     "buildStart": "npm run build && npm run start",
     "buildWatch": "tsc --watch",
-    "startDev": "nodemon dist/index.js",
+    "startDev": "set PORT=3000 && nodemon dist/index.js",
     "build": "tsc & cd client && npm run build",
     "gcp-build": "npm i && cd client && npm i && cd .. && npm run build",
     "deploy": "gcloud app deploy"

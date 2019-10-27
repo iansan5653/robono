@@ -3,14 +3,14 @@ import "./App.css";
 
 import MainPage from "./MainPage/MainPage";
 import CallSetupPage from "./CallSetupPage/CallSetupPage";
-import { Callee } from "./interface";
-import { loadMenuByID, loadCompanies } from "./fetchData";
+import {Callee} from "./interface";
+import {loadMenuByID, loadCompanies} from "./fetchData";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
-// import ThemeProvider from "@material-ui/core/ThemeProvider";
-// import {theme} from "./theme";
+import {ThemeProvider} from "@material-ui/core/styles";
+import {theme} from "./theme";
 
-const APP_NAME = "Miniature Carnival";
+const APP_NAME = process.env.REACT_APP_APP_NAME || "";
 
 interface State {
   callSetupPage?: React.ReactNode;
@@ -35,7 +35,7 @@ export default class App extends React.Component<{}, State> {
   };
 
   goToCallSetup = async (callee: Callee) => {
-    this.setState({ loading: true });
+    this.setState({loading: true});
     const menu = await loadMenuByID(callee.menuID);
     this.setState({
       callSetupPage: (
@@ -48,7 +48,7 @@ export default class App extends React.Component<{}, State> {
   loadCompanies = async () => {
     try {
       const companies = await loadCompanies();
-      this.setState({ companies: companies, loading: false });
+      this.setState({companies: companies, loading: false});
     } catch (e) {
       alert(
         "Sorry, there was an error loading data. Please refresh to try again!"
@@ -58,8 +58,9 @@ export default class App extends React.Component<{}, State> {
   };
 
   render() {
+    console.log(theme);
     return (
-      <>
+      <ThemeProvider theme={theme}>
         {this.state.companies !== undefined ? (
           <MainPage
             callees={this.state.companies}
@@ -76,8 +77,7 @@ export default class App extends React.Component<{}, State> {
           }`}
         />
         {this.state.callSetupPage}
-      </>
+      </ThemeProvider>
     );
   }
 }
-//<ThemeProvider theme={theme}>
