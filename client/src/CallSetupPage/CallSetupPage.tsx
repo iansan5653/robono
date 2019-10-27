@@ -1,5 +1,5 @@
 import React from "react";
-import { Callee, Menu, MenuOption } from "../interface";
+import {Callee, Menu, MenuOption} from "../interface";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +11,7 @@ import CallSetupQuestion from "../CallSetupQuestion/CallSetupQuestion";
 import CallPage from "../CallPage/CallPage";
 
 import "./CallSetupPage.css";
-import { Container } from "@material-ui/core";
+import {Container} from "@material-ui/core";
 
 interface Props {
   callee: Callee;
@@ -28,14 +28,16 @@ export default class CallSetupPage extends React.Component<Props, State> {
   container: React.ReactNode;
   selections: MenuOption[];
 
+  static cartoons = ["./searching.png", "./sitting.png", "./waiting.png"];
+
   constructor(props: Props) {
     super(props);
-    this.state = { displayClass: "visible", currentMenu: this.props.menu };
+    this.state = {displayClass: "visible", currentMenu: this.props.menu};
     this.selections = [];
   }
 
   startCloseTransition = () => {
-    this.setState({ displayClass: "invisible" });
+    this.setState({displayClass: "invisible"});
     if (this.props.onClose) {
       window.setTimeout(this.props.onClose, 250);
     }
@@ -43,7 +45,7 @@ export default class CallSetupPage extends React.Component<Props, State> {
 
   handleChoice = (selection: MenuOption) => {
     this.selections.push(selection);
-    this.setState({ currentMenu: selection.next });
+    this.setState({currentMenu: selection.next});
   };
 
   handleUndo = () => {
@@ -58,9 +60,9 @@ export default class CallSetupPage extends React.Component<Props, State> {
 
   generatePhoneNumber = (): string => {
     let result = this.props.callee.phoneNumber;
-    if(this.props.callee.start) result += this.props.callee.start;
-    this.selections.forEach(selection => {
-      result += `,${selection.dialNumber}`
+    if (this.props.callee.start) result += this.props.callee.start;
+    this.selections.forEach((selection) => {
+      result += `,${selection.dialNumber}`;
     });
     return result;
   };
@@ -71,7 +73,7 @@ export default class CallSetupPage extends React.Component<Props, State> {
       page = (
         <CallSetupQuestion
           menu={this.state.currentMenu}
-          onChoose={selection => this.handleChoice(selection)}
+          onChoose={(selection) => this.handleChoice(selection)}
         />
       );
     } else {
@@ -107,6 +109,12 @@ export default class CallSetupPage extends React.Component<Props, State> {
                 Undo
               </Button>
             </Toolbar>
+          )}
+          {this.state.currentMenu !== null && (
+            <img
+              src={CallSetupPage.cartoons[Math.floor(Math.random() * 3)]}
+              className="callSetupArt"
+            />
           )}
         </Container>
       </div>
