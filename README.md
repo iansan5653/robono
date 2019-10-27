@@ -9,6 +9,6 @@ in the future, current information on the project can be found at its Devpost:
 https://devpost.com/software/robono/
 
 To see it live, check out:
-https://miniature-carnival-2.appspot.com/
+https://robono.tech
 
 ![](screenshots.png)
