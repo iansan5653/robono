@@ -2,14 +2,12 @@ import {Menu, Callee} from "./interface";
 import * as sample from "./sampleData";
 
 const ENDPOINT = process.env.REACT_APP_SERVER_BASE;
-console.log(ENDPOINT);
 
 async function getJsonData(url: string): Promise<any> {
   const response = await fetch(url);
   if (response.ok) {
     return await response.json();
   } else {
-    console.info(response);
     throw new Error(response.statusText);
   }
 }

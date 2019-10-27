@@ -58,8 +58,9 @@ export default class CallSetupPage extends React.Component<Props, State> {
 
   generatePhoneNumber = (): string => {
     let result = this.props.callee.phoneNumber;
+    if(this.props.callee.start) result += this.props.callee.start;
     this.selections.forEach(selection => {
-      result += `,,,${selection.dialNumber}`
+      result += `,${selection.dialNumber}`
     });
     return result;
   };

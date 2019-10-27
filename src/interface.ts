@@ -1,9 +1,10 @@
 export interface Callee {
   name: string;
   description: string;
-  // icon?: string;
   phoneNumber: string;
   menuID: string;
+  color?: string;
+  start?: string;
 }
 
 export interface Menu {

@@ -13,21 +13,27 @@ const app = express();
 
 app.use(cors());
 
-app.get("/api/all-callees", (_, res) => {
+app.get("/api/all-callees", async (_, res) => {
   try {
-    const result = queryAllCallees();
+    const result = await queryAllCallees();
     res.status(200).send(result);
-  } catch {
+  } catch (e) {
     res.status(500).send("An unknown error occurred on the server.");
+    console.error(e);
   }
 });
 
-app.get("/api/menus/:menuID", function(req, res) {
+app.get("/api/menus/:menuID", async (req, res) => {
   try {
-    const result = queryMenu(req.params.menuID);
-    res.status(200).send(result);
-  } catch {
+    const result = await queryMenu(req.params.menuID);
+    if (result === null) {
+      res.status(500).send("Could not find menu for callee.");
+    } else {
+      res.status(200).send(result);
+    }
+  } catch (e) {
     res.status(500).send("An unknown error occurred on the server.");
+    console.error(e);
   }
 });
 

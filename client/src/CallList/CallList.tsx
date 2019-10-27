@@ -6,7 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import PhoneIcon from "@material-ui/icons/Phone";
 import "./CallList.css";
-import { Callee } from "../interface";
+import {Callee} from "../interface";
 
 interface Props {
   callees: Callee[];
@@ -25,14 +25,16 @@ export default class CallList extends React.Component<Props> {
                 onClick={() => this.props.onSelectCallee(callee)}
               >
                 <ListItemIcon>
-                  <PhoneIcon color="primary" />
+                  <PhoneIcon color="primary" htmlColor={callee.color} />
                 </ListItemIcon>
                 <ListItemText
                   primary={callee.name}
                   secondary={callee.description}
                 />
               </ListItem>
-              <Divider variant="inset" component="li" />
+              {index <= this.props.callees.length - 1 && (
+                <Divider variant="inset" component="li" />
+              )}
             </React.Fragment>
           );
         })}

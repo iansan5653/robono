@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import {Callee} from "../interface";
 import "./MainPage.css";
 import {Container} from "@material-ui/core";
+import Link from "@material-ui/core/Link";
 
 interface Props {
   callees: Callee[];
@@ -71,7 +72,6 @@ export default class MainPage extends React.Component<Props, State> {
           label="Filter"
           onChange={(event) => {
             this.filterList(event.target.value);
-            console.log(event.target.value);
           }}
           autoComplete="off"
         />
@@ -94,7 +94,7 @@ export default class MainPage extends React.Component<Props, State> {
           align="center"
           className="footer"
         >
-          {this.props.appName} is a project from HackGT 2019.
+          Made with ♥ at <Link href="http://hack.gt">HackGT 2019</Link>.
         </Typography>
       </Container>
     );

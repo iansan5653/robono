@@ -1,9 +1,9 @@
 {
   "name": "miniature-carnival-server",
   "scripts": {
-    "start": "set PORT=3100 && node dist/index.js",
+    "start": "set PORT=8080 && node dist/index.js",
     "startLocal": "set PORT=3100 && node dist/index.js",
-    "buildStart": "npm run build && npm run start",
+    "buildStart": "npm run build && npm run startLocal",
     "buildWatch": "tsc --watch",
     "startDev": "set PORT=3000 && nodemon dist/index.js",
     "build": "tsc & cd client && npm run build",
@@ -11,11 +11,13 @@
     "deploy": "gcloud app deploy"
   },
   "dependencies": {
-    "cross-var": "^1.1.0",
-    "prettier": "^1.18.2",
-    "typescript": "^3.6.4",
+    "@types/mongodb": "^3.3.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "cross-var": "^1.1.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.3",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.0.0",

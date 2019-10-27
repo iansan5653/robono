@@ -58,7 +58,6 @@ export default class App extends React.Component<{}, State> {
   };
 
   render() {
-    console.log(theme);
     return (
       <ThemeProvider theme={theme}>
         {this.state.companies !== undefined ? (
