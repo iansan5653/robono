@@ -17,7 +17,7 @@ export default class CallList extends React.Component<Props> {
   render() {
     return (
       <List className="callList">
-        {this.props.callees.map((callee, index) => {
+        {this.props.callees.map((callee, index, arr) => {
           return (
             <React.Fragment key={index}>
               <ListItem
@@ -32,7 +32,7 @@ export default class CallList extends React.Component<Props> {
                   secondary={callee.description}
                 />
               </ListItem>
-              {index <= this.props.callees.length - 1 && (
+              {index <= arr.length - 2 && (
                 <Divider variant="inset" component="li" />
               )}
             </React.Fragment>
