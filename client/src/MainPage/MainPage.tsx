@@ -47,15 +47,21 @@ export default class MainPage extends React.Component<Props, State> {
   render() {
     return (
       <Container maxWidth="md" className="mainPageContainer">
-        <Typography
-          variant="h6"
-          component="h1"
-          gutterBottom
-          color="primary"
-          className="pageTitle"
-        >
-          {this.props.appName}: Skip the robo-menu.
-        </Typography>
+        <div className="aboveSearch">
+          <img
+            src="./android-chrome-192x192.png"
+            alt="RoBoNo Logo"
+            className="logo"
+          />
+          <Typography
+            variant="h6"
+            component="h1"
+            color="primary"
+            className="pageTitle"
+          >
+            {this.props.appName}
+          </Typography>
+        </div>
         <TextField
           id="search"
           className="searchBox"
