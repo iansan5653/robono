@@ -1,4 +1,5 @@
-import { Menu, Callee } from "./interface";
+import {Menu, Callee} from "./interface";
+import * as sample from "./sampleData";
 
 const ENDPOINT = process.env.REACT_APP_SERVER_BASE;
 console.log(ENDPOINT);
@@ -14,9 +15,25 @@ async function getJsonData(url: string): Promise<any> {
 }
 
 export async function loadMenuByID(menuID: string): Promise<Menu> {
-  return await getJsonData(`${ENDPOINT}/menus/${menuID}`);
+  try {
+    return await getJsonData(`${ENDPOINT}/menus/${menuID}`);
+  } catch (e) {
+    if (process.env.NODE_ENV === "development") {
+      return sample.menu;
+    } else {
+      throw e;
+    }
+  }
 }
 
 export async function loadCompanies(): Promise<Callee[]> {
-  return await getJsonData(`${ENDPOINT}/all-callees`);
+  try {
+    return await getJsonData(`${ENDPOINT}/all-callees`);
+  } catch (e) {
+    if (process.env.NODE_ENV === "development") {
+      return sample.companies;
+    } else {
+      throw e;
+    }
+  }
 }

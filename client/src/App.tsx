@@ -70,7 +70,6 @@ export default class App extends React.Component<{}, State> {
         ) : (
           <Typography variant="body2">Loading...</Typography>
         )}
-        ;
         <CircularProgress
           className={`loadingProgress ${
             this.state.loading ? "visible" : "hidden"

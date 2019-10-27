@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import PhoneIcon from "@material-ui/icons/Phone";
 import "./CallPage.css";
+import path from "path";
 
 interface Props {
   phoneNumber: string;
@@ -13,7 +14,12 @@ export default class CallSetupQuestion extends React.Component<Props> {
   render() {
     return (
       <div className="callPageContainer">
-        <Typography variant="body2" component="span">
+        <img
+          src="./party.png"
+          className="partyImage"
+          alt="Cartoon image of people dancing."
+        />
+        <Typography variant="body2" component="span" className="textContainer">
           Great! You've selected all the options and we generated a phone number
           for you that will skip all the annoying menu prompts.
           <br />
@@ -29,7 +35,7 @@ export default class CallSetupQuestion extends React.Component<Props> {
             readOnly: true
           }}
           variant="outlined"
-          className="spaceTop"
+          className="padTop"
         />
         <Button
           color="primary"

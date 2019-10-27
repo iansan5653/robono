@@ -11,6 +11,16 @@
   display: block;
 }
 
-.spaceTop {
+.textContainer {
+  text-align: center;
+  max-width: 450px;
+}
+
+.padTop {
   margin-top: 32px !important;
+}
+
+.partyImage {
+  max-width: 300px;
+  width: 75%;
 }
