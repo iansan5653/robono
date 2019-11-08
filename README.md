@@ -2,7 +2,7 @@
 
 ## Skip the robots and get to the point.
 
-App-based navigation for touch-tone menus.
+App-based navigation for touch-tone menus (see below for more details). Please note that this is a prototype / minimum viable product, so it should be treated as a demonstration and not used in actual practice at this point.
 
 To see it live, check out:
 https://robono.tech
